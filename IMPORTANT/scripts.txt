@@ -1,0 +1,5 @@
+1 - О принтфе:
+http://all-ht.ru/inf/prog/c/func/printf.html
+http://www.c-cpp.ru/content/printf
+https://csnotes.medium.com/ft-printf-tutorial-42project-f09b6dc1cd0e
+
