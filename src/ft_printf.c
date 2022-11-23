@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkorolov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 13:17:34 by bkorolov          #+#    #+#             */
-/*   Updated: 2022/11/14 13:17:39 by bkorolov         ###   ########.fr       */
+/*   Created: 2022/11/22 14:28:12 by bkorolov          #+#    #+#             */
+/*   Updated: 2022/11/22 14:28:17 by bkorolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_printchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -24,7 +24,7 @@ int	ft_formats(va_list args, const char format)
 
 	print_length = 0;
 	if (format == 'c')
-		print_length += ft_putchar(va_arg(args, int));
+		print_length += ft_printchar(va_arg(args, int));
 	else if (format == 's')
 		print_length += ft_printstr(va_arg(args, char *));
 	else if (format == 'p')
@@ -57,7 +57,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-			print_length += ft_putchar(str[i]);
+			print_length += ft_printchar(str[i]);
 		i++;
 	}
 	va_end(args);

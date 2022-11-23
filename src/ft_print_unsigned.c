@@ -5,43 +5,73 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkorolov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 13:20:19 by bkorolov          #+#    #+#             */
-/*   Updated: 2022/11/14 13:20:24 by bkorolov         ###   ########.fr       */
+/*   Created: 2022/11/22 14:29:18 by bkorolov          #+#    #+#             */
+/*   Updated: 2022/11/22 14:29:21 by bkorolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-int	ft_num_len(unsigned	int num)
+int	ft_num_len(int n)
 {
-	int	len;
+	int	count;
 
-	len = 0;
-	while (num != 0)
+	count = 0;
+	while (n != 0)
 	{
-		len++;
-		num = num / 10;
+		n /= 10;
+		count++;
 	}
-	return (len);
+	return (count);
 }
 
-char	*ft_itoa(unsigned int n)
+static char	*ft_str_num(char *str, int n, int len)
+{
+	int	mod;
+	int	neg;
+
+	neg = 1;
+	if (n < 0)
+		neg = -1;
+	str[len--] = '\0';
+	while (len > 1)
+	{
+		mod = (n % 10) * neg;
+		str[len--] = mod + '0';
+		n /= 10;
+	}
+	if (neg == 1)
+	{
+		str[len] = (n % 10) + '0';
+		str[0] = (n / 10) + '0';
+	}
+	else if (neg == -1)
+	{
+		str[len] = (n * -1) + '0';
+		str[0] = '-';
+	}
+	return (str);
+}
+
+char	*ft_itoa(int n)
 {
 	char	*num;
 	int		len;
 
 	len = ft_num_len(n);
-	num = (char *)malloc(sizeof(char) * (len + 1));
+	if (n <= 0)
+		len++;
+	num = (char *)malloc((len + 1) * sizeof(char));
 	if (!num)
 		return (0);
-	num[len] = '\0';
-	while (n != 0)
+	if (n > 0 && n < 10)
 	{
-		num[len - 1] = n % 10 + 48;
-		n = n / 10;
-		len--;
+		num[0] = n + '0';
+		num[1] = '\0';
 	}
+	else
+		num = ft_str_num(num, n, len);
 	return (num);
 }
 

@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkorolov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 13:19:54 by bkorolov          #+#    #+#             */
-/*   Updated: 2022/11/14 13:19:58 by bkorolov         ###   ########.fr       */
+/*   Created: 2022/11/22 14:28:58 by bkorolov          #+#    #+#             */
+/*   Updated: 2022/11/22 14:29:01 by bkorolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int	ft_ptr_len(uintptr_t num)
+int	ft_ptr_len(intptr_t num)
 {
 	int	len;
 
@@ -26,7 +26,7 @@ int	ft_ptr_len(uintptr_t num)
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t num)
+void	ft_put_ptr(intptr_t num)
 {
 	if (num >= 16)
 	{
