@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#include "../include/ft_printf.h"
+#include "../include/libft.h"
 #include <stdlib.h>
 
 void	ft_putstr(char *str)

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
+#include "../include/libft.h"
 #include <stdlib.h>
 
 int	ft_num_len(int n)
@@ -65,7 +66,7 @@ char	*ft_itoa(int n)
 	num = (char *)malloc((len + 1) * sizeof(char));
 	if (!num)
 		return (0);
-	if (n > 0 && n < 10)
+	if (n >= 0 && n < 10)
 	{
 		num[0] = n + '0';
 		num[1] = '\0';
