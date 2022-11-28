@@ -33,7 +33,7 @@ int	ft_formats(va_list args, const char format)
 	else if (format == 'd' || format == 'i')
 		print_length += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
-		print_length += ft_print_unsigned(va_arg(args, unsigned int));
+		print_length += ft_num_len(va_arg(args, unsigned long int));
 	else if (format == 'x' || format == 'X')
 		print_length += ft_print_hex(va_arg(args, unsigned int), format);
 	else if (format == '%')
